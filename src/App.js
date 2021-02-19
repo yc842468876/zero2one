@@ -9,6 +9,9 @@ class App extends Component {
     return (
       <div className="App">
         <Button type="primary">Button</Button>
+        <div className="box">
+
+        </div>
       </div>
     );
   }
