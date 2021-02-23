@@ -1,0 +1,32 @@
+#admin-layout .trigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#admin-layout .trigger:hover {
+  color: #1890ff;
+}
+
+#admin-layout .logo {
+  height: 30px;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.layout-header {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+#admin-layout .ant-layout-header {
+  height: 50px;
+  line-height: 50px;
+}

@@ -1,9 +1,7 @@
-.App {
-  text-align: center;
-}
-
-.box {
-  background-color: yellow;
+html,
+body,
+#root,
+.ant-layout {
   width: 100%;
-  height: 100px;
+  height: 100%;
 }
