@@ -81,7 +81,7 @@ function List(props) {
         bordered
         pagination={{
           current: page,
-          pageSize: 5,
+          pageSize: 10,
           total: props.productList.data.length,
           onChange: (page, pageSize) => {
             message.info(`page_${page}`);

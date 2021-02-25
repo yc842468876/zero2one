@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { BaseURL } from './config';
+import { BaseURL_dev, BaseURL_prd } from './config';
 import { getToken } from './auth';
 
 const instance = axios.create({
-  baseURL: BaseURL,
+  baseURL: process.env.NODE_ENV === 'development' ? BaseURL_dev : BaseURL_prd,
   timeout: 1000 * 30,
 });
 

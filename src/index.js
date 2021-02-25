@@ -16,6 +16,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { mainRoutes } from './routes';
 
+// 开发环境引用 mock 代理接口
+if (process.env.NODE_ENV === 'development') {
+  require('./mock/index.js');
+}
+
 ReactDOM.render(
   <Provider store={store}>
     <ConfigProvider locale={zhCN}>

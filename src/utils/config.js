@@ -1,3 +1,4 @@
-const BaseURL = 'http://localhost:3001';
+const BaseURL_dev = 'http://localhost:9527';
+const BaseURL_prd = 'http://localhost:3001';
 
-export { BaseURL };
+export { BaseURL_dev, BaseURL_prd };

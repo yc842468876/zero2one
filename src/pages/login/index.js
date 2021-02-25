@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox, Card, message } from 'antd';
 import { setToken } from '../../utils/auth';
+import { login } from '../../services/login';
 import './index.css';
 
 const layout = {
@@ -12,10 +13,15 @@ const tailLayout = {
 };
 
 function Index(props) {
-  const onFinish = (values) => {
-    message.info('登录成功');
-    setToken(JSON.stringify(values));
-    props.history.push('/admin');
+  const onFinish = async (values) => {
+    const { success, message: msg, userInfo } = await login(values);
+    if (success) {
+      message.success('登录成功');
+      setToken(userInfo.token);
+      props.history.push('/admin');
+    } else {
+      message.error(msg || '登陆失败');
+    }
   };
 
   return (

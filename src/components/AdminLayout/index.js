@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Layout, Menu, Dropdown, Avatar, message, Badge } from 'antd';
@@ -8,7 +8,8 @@ import {
   DownOutlined,
 } from '@ant-design/icons';
 import { adminRoutes } from '../../routes';
-import { removeToken } from '../../utils/auth';
+import { removeToken, getToken } from '../../utils/auth';
+import { queryUserInfo } from '../../store/actions/user';
 import './index.css';
 
 const { Header, Sider, Content } = Layout;
@@ -17,6 +18,10 @@ const routes = adminRoutes.filter((route) => route.isShow);
 
 function Index(props) {
   const [collapsed, setCollapsed] = useState(false);
+
+  useEffect(() => {
+    props.dispatch(queryUserInfo({ token: getToken() }));
+  }, []);
 
   const popMenu = (
     <Menu
@@ -87,9 +92,11 @@ function Index(props) {
           )}
           <Dropdown overlay={popMenu}>
             <div style={{ marginRight: 24 }}>
-              <Avatar>U</Avatar>
+              <Avatar src={props.user.userInfo.avatar}>U</Avatar>
               <span style={{ margin: '0 10px' }}>
-                <Badge dot={!props.notice.isAllRead}>currentUser</Badge>
+                <Badge dot={!props.notice.isAllRead}>
+                  {props.user.userInfo.name}
+                </Badge>
               </span>
               <DownOutlined />
             </div>
@@ -113,4 +120,5 @@ function Index(props) {
 
 export default connect((state) => ({
   notice: state.notice,
+  user: state.user,
 }))(withRouter(Index));
